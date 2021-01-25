@@ -1,2 +1,1 @@
-import EditableList from './src/index';
-export default { EditableList };
+export { default as EditableList } from './src/index'
