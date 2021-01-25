@@ -15,7 +15,7 @@ npm install --save react-native-editable-list
 ```jsx
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity } from 'react-native';
-import EditableList from './ks'
+import EditableList from 'react-native-editable-list'
 
 export default function App() {
   const [list, setList] = useState([]);
