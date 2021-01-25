@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     mode: 'production',
-    entry: './index.js',
+    entry: './src/index.js',
     output: {
         path: path.resolve('lib'),
         filename: 'index.js',
@@ -13,9 +13,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader"
-                }
+                use: "babel-loader"
             }
         ]
     }
