@@ -14,17 +14,17 @@ npm install --save react-native-editable-list
 
 ```jsx
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
-import EditableList from 'react-native-editable-list';
+import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity } from 'react-native';
+import EditableList from './ks'
 
 export default function App() {
   const [list, setList] = useState([]);
   return (
     <View style={styles.container}>
-	  <EditableList placeholder='Please, type something' onListChange={setList.bind(this)} list={list}/>
-	  <Text> Data </Text>
-	  <Text> {list.toString()} </Text>
-    </View>
+	  <EditableList placeholder='Type something' onListChange={setList.bind(this)} list={list}/>
+	  <Text style={styles.data}> Data </Text>
+	  <Text> {list.length ? JSON.stringify(list) : 'Please, type something.'} </Text>
+	</View>
   );
 }
 
@@ -34,8 +34,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'yellow',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20
+	padding: 40
   },
+  data: {
+      fontSize: 20
+  }
 });
 ```
 
