@@ -14,22 +14,12 @@ npm install --save react-native-editable-list
 
 ```jsx
 import React, { Component } from 'react'
-import EditableList from 'react-native-editable-list'
+
+import MyComponent from 'react-native-editable-list'
 
 class Example extends Component {
-  constructor() {
-    super();
-    this.state = {
-      obs: []
-    }
-  }
-  
-  onChange(list) {
-    this.setState({obs: list})
-  }
-  
   render() {
-    return <EditableList list={this.state.obs} placeholder='Type Something' onListChange={this.onChange.bind(this)}/>
+    return <MyComponent />
   }
 }
 ```
