@@ -11,6 +11,7 @@ npm install --save react-native-editable-list
 ```
 
 ## Usage
+https://snack.expo.io/@phos-dev/react-native-editable-list
 
 ```jsx
 import React, { useState } from 'react';
@@ -34,7 +35,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'yellow',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 40
+    paddingTop: 40,
+    paddingBottom: 40
   },
   data: {
       fontSize: 20
