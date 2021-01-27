@@ -34,9 +34,9 @@ class EditableList extends Component {
         };
     }
 
-    handleListItemChange = (event, index) => {
-        const newList = this.state.list;
-        newList[index] = event.target.value;
+    handleListItemChange = (text, index) => {
+        const newList = [...this.state.list];
+        newList[index] = text;
         this.setState({ list: newList }, () => {
                 this.props.onListChange(this.state.list);
             }
@@ -44,9 +44,9 @@ class EditableList extends Component {
     };
 
     deleteItem = (index) => {
-        const newList = this.state.list;
+        const newList = [...this.state.list];
         newList.splice(index, 1);
-        this.setState({ list: newList }, () => {
+        this.setState({ list: newList },() => {
                 this.props.onListChange(this.state.list);
             }
         );
@@ -60,17 +60,18 @@ class EditableList extends Component {
     };
 
     getList = () => {
+        
         return (
             <FlatList 
                 data={this.state.list} 
-                keyExtractor={(item, index) => index.toString()} 
+                keyExtractor={(_item, index) => index.toString()} 
                 renderItem={({item, index}) => (
                     <View style={styles.component}>
                         <TextInput
                             value={item}
                             placeholder={this.props.placeholder}
-                            onChange={e => {
-                                this.handleListItemChange(e, index);
+                            onChangeText={text => {
+                                this.handleListItemChange(text, index);
                             }}
                             onEndEditing={e => {
                                 e.nativeEvent.text.length === 0 ? this.deleteItem(index) : null
@@ -89,13 +90,15 @@ class EditableList extends Component {
     }
 
     onChange = (text) => {
-        this.setState({ newInput: text });
+        this.setState({
+            newInput: text
+        });
     };
 
     Add = (event) => {
         if (event.nativeEvent.text.trim(' ').length > 0) {
-            const newList = this.state.list;
-            this.setState({ list: newList.concat(event.nativeEvent.text), newInput: ''}, () => {
+            const newList = [...this.state.list];
+            this.setState({ list: newList.concat(event.nativeEvent.text), newInput: '' }, () => {
                     this.props.onListChange(this.state.list);
                 }
             );
@@ -111,7 +114,7 @@ class EditableList extends Component {
                     onEndEditing={this.Add}
                     placeholder={this.props.placeholder}
                     value={this.state.newInput}
-                    style={{...styles.input, borderRadius: 20, width: '90%', marginBottom: 20, marginRight: 0}}
+                    style={{...styles.input, borderRadius: 20, width: 300, marginBottom: 20, marginRight: 0}}
                 />
                 {this.getList()}
             </View>
@@ -119,11 +122,15 @@ class EditableList extends Component {
     }
 }
 
+EditableList.propTypes = {
+    list: PropTypes.array.isRequired,
+    onListChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string
+}
 
 EditableList.defaultProps = {
     list: [],
-    placeholder: PropTypes.string.isRequired,
-    onListChange: PropTypes.func.isRequired
+    placeholder: 'Type Something'
 };
 
 export default EditableList;
