@@ -69,6 +69,12 @@
       "module"
     ]
   },
+  "keywords": [
+    "react-native",
+	"editable list",
+	"list",
+	"react-component"
+  ],
   "eslintIgnore": [
     "node_modules/",
     "lib/"
