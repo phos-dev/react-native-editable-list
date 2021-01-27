@@ -24,7 +24,7 @@ export default function App() {
 	  <EditableList placeholder='Type something' onListChange={setList.bind(this)} list={list}/>
 	  <Text style={styles.data}> Data </Text>
 	  <Text> {list.length ? JSON.stringify(list) : 'Please, type something.'} </Text>
-	</View>
+    </View>
   );
 }
 
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'yellow',
     alignItems: 'center',
     justifyContent: 'center',
-	padding: 40
+    padding: 40
   },
   data: {
       fontSize: 20
